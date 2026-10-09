@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | Eventra</title>
+  <link rel="stylesheet" href="uts_style_malya.css">
+</head>
+<body>
+
+  <main class="auth">
+
+    <!-- Kolom kiri: ilustrasi / artwork branding -->
+    <section class="auth__art" aria-label="Brand illustration">
+      <span class="shape shape--one"></span>
+      <span class="shape shape--two"></span>
+      <span class="shape shape--three"></span>
+
+      <div class="auth__art-text">
+        <p class="auth__brand">Eventra</p>
+        <h2 class="auth__tagline">Plan every event, one beautiful place.</h2>
+        <p class="auth__sub">Meetings, incentives, conferences, and exhibitions managed with ease.</p>
+      </div>
+    </section>
+
+    <!-- Kolom kanan: formulir login -->
+    <section class="auth__panel">
+      <div class="auth__box">
+
+        <img class="auth__logo" src="uts_malya_img/logo.svg" alt="Eventra logo" width="48" height="48">
+
+        <h1 class="auth__title">Sign in to Eventra</h1>
+
+        <form class="form" action="#" method="post">
+
+          <button type="button" class="btn btn--google" aria-label="Sign in with Google">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.4a5.5 5.5 0 0 1-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8z"/>
+              <path fill="#34A853" d="M12 24c3.2 0 6-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1A12 12 0 0 0 12 24z"/>
+              <path fill="#FBBC05" d="M5.4 14.4a7.2 7.2 0 0 1 0-4.8V6.5H1.4a12 12 0 0 0 0 11l4-3.1z"/>
+              <path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.4 6.5l4 3.1C6.3 6.9 8.9 4.8 12 4.8z"/>
+            </svg>
+            <span>Sign in with Google</span>
+          </button>
+
+          <div class="divider" role="separator"><span>or</span></div>
+
+          <div class="field">
+            <label for="email">Username or Email</label>
+            <input type="text" id="email" name="email" autocomplete="username" required>
+          </div>
+
+          <div class="field">
+            <div class="field__row">
+              <label for="password">Password</label>
+              <a href="#" class="link">Forgot Password?</a>
+            </div>
+            <div class="field__wrap">
+              <input type="password" id="password" name="password" autocomplete="current-password" required>
+              <button type="button" class="field__toggle" aria-label="Show password">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="check">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember Me</label>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Sign In</button>
+
+        </form>
+
+        <p class="auth__foot">Don't have an account? <a href="#" class="link">Sign up</a></p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
+
+/* ==========================================================
+   Eventra - Halaman Sign In (Split-Screen)
+   Topik: Box Model, Sizing, Positioning, Typography
+   Pendekatan: mobile-first, breakpoint 768px
+   ========================================================== */
+
+/* ---------- Reset & box model ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink: #1f2937;          /* teks utama, kontras 14:1 di atas putih */
+  --muted: #4b5563;        /* teks sekunder, kontras 7.6:1 */
+  --line: #6b7280;         /* border input, kontras 4.8:1 */
+  --brand: #4338ca;        /* indigo, kontras 8.3:1 dengan putih */
+  --brand-dark: #3730a3;
+  --white: #ffffff;
+  --radius: 10px;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--white);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- Layout utama (mobile: bertumpuk) ---------- */
+.auth {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- Kolom kiri: artwork ---------- */
+.auth__art {
+  position: relative;          /* acuan untuk shape absolut */
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  min-height: 220px;
+  padding: 32px 24px;
+  color: var(--white);
+  background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 55%, #7c3aed 100%);
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+.shape--one {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  right: -60px;
+  background: #f472b6;
+}
+
+.shape--two {
+  width: 180px;
+  height: 180px;
+  bottom: -60px;
+  left: 20%;
+  background: #38bdf8;
+}
+
+.shape--three {
+  width: 90px;
+  height: 90px;
+  top: 40%;
+  left: -30px;
+  background: #fbbf24;
+  display: none;               /* disembunyikan di mobile agar teks tetap jelas */
+}
+
+.auth__art-text {
+  position: relative;          /* di atas shape */
+  z-index: 1;
+  max-width: 420px;
+}
+
+.auth__brand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.auth__tagline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.auth__sub {
+  display: none;               /* disembunyikan di layar kecil */
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+/* ---------- Kolom kanan: panel formulir ---------- */
+.auth__panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background: var(--white);
+}
+
+.auth__box {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth__logo {
+  margin-bottom: 20px;
+}
+
+.auth__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+/* ---------- Formulir ---------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.field__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field input[type="text"],
+.field input[type="password"] {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.field input:focus {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 1px;
+  border-color: var(--brand);
+}
+
+/* Input password + tombol ikon (positioning) */
+.field__wrap {
+  position: relative;
+}
+
+.field__wrap input {
+  padding-right: 48px;
+}
+
+.field__toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.field__toggle:hover,
+.field__toggle:focus-visible {
+  color: var(--brand);
+  background: #eef2ff;
+}
+
+/* Checkbox */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand);
+}
+
+.check label {
+  font-size: 0.95rem;
+}
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+.btn--google {
+  color: var(--ink);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+}
+
+.btn--google:hover {
+  background: #f3f4f6;
+}
+
+.btn--primary {
+  color: var(--white);
+  background: var(--brand);
+  border: 1.5px solid var(--brand);
+}
+
+.btn--primary:hover {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+/* ---------- Pemisah "or" ---------- */
+.divider {
+  position: relative;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #d1d5db;
+}
+
+.divider span {
+  position: relative;          /* tampil di atas garis */
+  padding: 0 12px;
+  background: var(--white);
+}
+
+/* ---------- Tautan ---------- */
+.link {
+  color: var(--brand);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline;
+}
+
+.auth__foot {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ==========================================================
+   Desktop / tablet: split-screen dua kolom (>= 768px)
+   ========================================================== */
+@media (min-width: 768px) {
+  .auth {
+    flex-direction: row;
+  }
+
+  .auth__art {
+    flex: 1 1 50%;
+    align-items: center;
+    min-height: 100vh;
+    padding: 64px;
+  }
+
+  .auth__tagline {
+    font-size: 2.5rem;
+  }
+
+  .auth__sub {
+    display: block;
+    font-size: 1.125rem;
+  }
+
+  .auth__panel {
+    flex: 1 1 50%;
+    padding: 64px 48px;
+  }
+
+  .shape--three {
+    display: block;
+  }
+
+  .shape--one {
+    width: 420px;
+    height: 420px;
+  }
+
+  .shape--two {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect width="48" height="48" rx="12" fill="#4338ca"/>
+  <path d="M14 15h20v4H14zM14 22h14v4H14zM14 29h20v4H14z" fill="#ffffff"/>
+</svg>
+
+
+
